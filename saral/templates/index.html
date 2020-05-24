@@ -1,0 +1,60 @@
+<!--First page of the website-->
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Saral@BTES</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css1/style.css' %}">
+    <meta name="viewport" content="device-width", initial-scale="1.0" >
+	<link href="https://fonts.googleapis.com/css2?family=Flamenco&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+</head>
+<body>
+<header>
+
+    <nav>
+        <div  class="row clearfix" style="position: absolute; top:10px; right:250px; left: 0px;">
+            <img src="{% static 'images/logo1.png' %}" class="logo">
+
+            <ul class="main-nav animated slideInDown" id="check-class">
+
+                <a href="{% url 'myapp:devinfo' %}" class="btn-login"><b>DEVELOPER'S INFO</b></a>
+                <a href="{% url 'myapp:contact' %}" class="btn-login"><b>CONTACT US</b></a>
+
+            </ul>
+            <a  href="#" class="mobile-icon" onclick="slideshow()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+    </nav>
+    <div class="main-content-header">
+        <h1>WELCOME TO <span class="colorchange">SARAL</span>.<br>
+            Platform making everything saral </h1>
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'myapp:dashboard' %}" class="btn-login"><b>Go To Dashboard</b></a>
+        {% else %}
+            <a href="{% url 'myapp:login' %}" class="btn-login"><b>Employee Login</b></a>
+        {% endif %}
+    </div>
+
+</header>
+<script type="text/javascript"> /*javascript code */
+function slideshow() {
+    var x = document.getElementById('check-class');
+    if (x.style.display === "none") {
+        x.style.display = "block";
+
+    } else {
+        x.style.display = "none";
+    }
+
+}
+</script>
+
+</body>
+</html>

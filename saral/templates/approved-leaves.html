@@ -1,0 +1,49 @@
+<!--Approved Leaves -->
+
+{% extends 'dashboard.html' %}
+{% block content %}
+    <head>
+        <style>
+
+            #editSave {
+                display: block;
+                margin: 0 auto;
+                border: none;
+                border-radius: 5px;
+                padding: 20px 30px;
+                background-color: #2699c7;
+                color: #fff;
+                font-size: 24px;
+                outline: none;
+            }
+
+            #profile-edit-save {
+                box-sizing: border-box;
+                width: 1000px;
+                margin: 0 auto;
+                padding: 20px;
+                border-bottom: 1px solid rgba(84, 183, 222, 0.5);
+                background-color: rgba(84, 183, 222, 0.3);
+                margin-top: -25px;
+            }
+
+        </style>
+ <title></title>
+    </head>
+    <body>
+    <div id="profile-edit-save">
+        <button id="editSave">Approved Leaves</button>
+    </div><br><br>
+    {% for leave in leaves %}
+        <div class="row d-flex justify-content-center">
+            <div class="alert alert-warning" role="alert" style="width: 1000px">
+
+                <h4 class="alert-heading">Date: {{ leave.date }} </h4>
+
+                <h4 class="alert-heading">Reason : {{ leave.reason }}</h4>
+            </div>
+        </div>̥
+    {% endfor %}
+{% include 'snippet.html' with posts=leaves %}
+    </body>
+{% endblock content %}

@@ -1,0 +1,177 @@
+<!--Page rendered after valid login credentials-->
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Dashboard</title>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+          crossorigin="anonymous"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+            crossorigin="anonymous"></script>
+    <style>
+
+        #profile-edit-save {
+            box-sizing: border-box;
+            width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            border-bottom: 1px solid rgba(84, 183, 222, 0.5);
+            background-color: rgba(84, 183, 222, 0.3);
+        }
+
+        #editSave {
+            display: block;
+            margin: 0 auto;
+            border: none;
+            border-radius: 5px;
+            padding: 20px 30px;
+            background-color: #2699c7;
+            color: #fff;
+            font-size: 24px;
+            outline: none;
+        }
+
+    </style>
+</head>
+<body class="sb-nav-fixed" background="{% static 'images/dashback.jpg' %}">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'myapp:dashboard' %}"><h4 >Welcome To BTES</h4></a>
+    <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i>
+    </button>
+
+</nav>
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="nav">
+                <h3></br>Hello, {{ request.user }}
+                </h3>
+            </div>
+            <div class="sb-sidenav-menu">
+                <br>
+
+
+                    <a class="nav-link collapsed" href="{% url 'myapp:dashboard' %}" data-toggle="collapse"
+                       data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+
+                        <div class="sb-nav-link-icon"></div>
+                        <div>Home
+                        </div>
+                    </a>
+
+                    {% if request.user.is_staff %}
+                        <a class="nav-link collapsed" href="{% url 'myapp:view-leave' %}" data-toggle="collapse"
+                           data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+
+                            <div class="sb-nav-link-icon"></div>
+                            <div>Pending Leaves
+                            </div>
+                        </a>
+                    {% endif %}
+
+                    <a class="nav-link collapsed" href="{% url 'myapp:view_profile' %}" data-toggle="collapse"
+                       data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+
+                        <div class="sb-nav-link-icon"></div>
+                        <div> View Profile
+                        </div>
+                    </a>
+
+                    <a class="nav-link collapsed" href="{% url 'myapp:edit_profile' %}" data-toggle="collapse"
+                       data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+
+                        <div class="sb-nav-link-icon"></div>
+                        <div> Edit Profile
+                        </div>
+                    </a>
+                    <a class="nav-link collapsed" href="{% url 'password_change' %}" data-toggle="collapse"
+                       data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+
+                        <div class="sb-nav-link-icon"></div>
+                        <div> Change Password
+                        </div>
+                    </a>
+
+                    <a class="nav-link collapsed" href="{% url 'myapp:leave-apply' %}" data-toggle="collapse"
+                       data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        <div class="sb-nav-link-icon"></div>
+                        <div> Leave Apply
+                        </div>
+                    </a>
+
+                    <a class="nav-link collapsed" href="{% url 'myapp:view_approve' %}" data-toggle="collapse"
+                       data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        <div class="sb-nav-link-icon"></div>
+                        <div> Approved Leaves
+                        </div>
+                    </a>
+
+
+                    <a class="nav-link collapsed" href="{% url 'myapp:notify' %}" data-toggle="collapse"
+                       data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        <div class="sb-nav-link-icon"></div>
+                        <div> Official Notification
+                        </div>
+                    </a>
+                    <a class="nav-link collapsed" href="{% url 'myapp:personal' %}" data-toggle="collapse"
+                       data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        <div class="sb-nav-link-icon"></div>
+                        <div> Personal Notification
+                        </div>
+                    </a>
+
+                    <a class="nav-link collapsed" href="{% url 'myapp:logout' %}" data-toggle="collapse"
+                       data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        <div class="sb-nav-link-icon"></div>
+                        <div> Logout
+                        </div>
+                    </a>
+
+            </div>
+
+        </nav>
+
+    </div>
+
+
+    <div id="layoutSidenav_content">
+        {% block content %}
+            <div id="profile-edit-save">
+                <button id="editSave">Official Notification</button>
+            </div><br>
+            <br>
+
+            {% for post in posts %}
+                <div class="row d-flex justify-content-center">
+                    <div class="alert alert-warning" role="alert" style="width: 1000px">
+
+                        <h4 class="alert-heading">From :- {{ post.From }} , To :- {{ post.To }}</h4>
+
+                        <h4 class="alert-heading">Subject :- {{ post.Subject }}</h4>
+
+                        <hr>
+                        <p>
+                            {{ post.Content }}
+                        </p>
+                        <hr>
+                        <p class="mb-0"> {{ post.Date }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+            {% include 'snippet.html' with posts=posts %}
+        {% endblock content %}
+
+    </div>
+    ̥
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

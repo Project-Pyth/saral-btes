@@ -1,0 +1,51 @@
+<!--Page where manager either accept or reject the leave-->
+
+{% extends 'dashboard.html' %}
+
+{% block content %}
+
+<div id="profile-edit-save">
+    <button id="editSave">Pending Leaves</button>
+</div>
+<br>
+<div id="profile-edit-area">
+    <div class="row d-flex justify-content-center">
+        <div class="alert alert-warning" role="alert" style="width: 1000px; height: auto;">
+            {% if leaves %}
+
+            {% for leave in leaves %}
+
+
+            <p>From: {{ leave.user }}</p>
+            <p>Days Asked: {{ leave.days_asked }}</p>
+            <p>Applied Date: {{ leave.date }}</p>
+            <p>Reason: {{ leave.reason }}</p>
+            <form action="{% url 'myapp:approve' leave.pk %}" method="post">
+                {% csrf_token %}
+
+                <button type="submit">Approve</button>
+
+            </form>
+            <br>
+            <form action="{% url 'myapp:rejected' leave.pk %}" method="post">
+                {% csrf_token %}
+
+                <button type="submit">Reject</button>
+
+            </form>
+            <hr style="height:2px; background:black;">
+            {% endfor %}
+            {% else %}
+
+            <p>No Pending Leaves</p>
+
+
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+<br>
+{% include 'snippet.html' with posts=leaves %}
+</body>
+{% endblock content %}

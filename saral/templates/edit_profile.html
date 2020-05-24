@@ -1,0 +1,167 @@
+<!--Employees can Edit their Profile-->
+
+{% extends 'dashboard.html' %}
+{% block content %}
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:500&subset=latin,cyrillic');
+
+/*--- GENERAL ---*/
+body {
+  padding: 0;
+  margin-top: 0;
+  font-family: 'Open Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 100%;
+  line-height: 1.45;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: #111;
+}
+
+p {
+  text-indent: 20px;
+  text-align: justify;
+}
+
+.button {
+  width: 150px;
+  height: 25px;
+  margin: 5px 0 5px 0;
+  color: #fff;
+  background: rgba(71, 73, 77, 1);
+  border: none;
+  font-size: 14px;
+  outline: none;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background: rgba(71, 73, 77, 0.8);
+}
+
+.button:active {
+
+  background: rgba(71, 73, 77, 0.8);
+}
+
+/*--- /GENERAL ---*/
+
+#profile-edit-save {
+  box-sizing:border-box;
+  width:1000px;
+  margin:0 auto;
+  padding:20px;
+  border-bottom:1px solid rgba(84,183,222,0.5);
+  background-color:rgba(84,183,222,0.3);
+}
+
+#editSave {
+  display:block;
+  margin: 0 auto;
+  border:none;
+  border-radius:5px;
+  padding:20px 30px;
+  background-color:#2699c7;
+  color:#fff;
+  font-size:24px;
+  outline: none;
+}
+
+#profile-edit-area {
+  width:800px;
+  height:500px;
+  margin: 0 auto;
+}
+
+
+
+#profile-edit-area table {
+  margin: 0 auto 10px;
+  vertical-align:top;
+}
+
+#profile-edit-area table tr {
+  vertical-align:top;
+}
+
+.edit-title {
+  padding-top:15px;
+}
+
+#edit-area-right textarea {
+  height:20px;
+  resize:none;
+}
+</style>
+    <title></title>
+</head>
+<body>
+<div id="profile-edit-save">
+  <button id="editSave">Edit Profile</button>
+</div>
+<br>
+<div id="profile-edit-area">
+    <div class="row d-flex justify-content-center">
+     <div class="alert alert-warning" role="alert"  style="width: 1000px; height: auto;">
+{% for message in messages %}
+                <span class="colorchange">
+                    <span style="color: black; ">
+                        <h3 style="position:absolute; left:70px; margin-bottom: 0px;margin-left: 100px" ><b><i>{{message}}</i></b>
+                        </h3>
+                    </span>
+                </span>
+                  {% endfor %}<br><br>
+  <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <table>
+        <tbody>
+        <tr>
+
+
+              <td class="edit-title"><h3>First Name     :  </h3></td>
+            <td class="edit-title"><h3>{{ user_form.first_name }}</h3></td>
+          </tr>
+          <tr>
+              <td class="edit-title"><h3>Last Name </h3></td>
+              <td class="edit-title"><h3>{{ user_form.last_name }}</h3></td>
+          </tr>
+          <tr>
+              <td class="edit-title"><h3>Designation:</h3></td>
+              <td class="edit-title"><h3>{{profile_form.designation}}</h3></td>
+          </tr>
+          <tr>
+              <td class="edit-title"><h3>Contact</h3></td>
+              <td class="edit-title"><h3>{{ profile_form.contact }}</h3></td>
+          </tr>
+          <tr>
+              <td class="edit-title"><h3>Address:</h3></td>
+              <td class="edit-title"><h3>{{profile_form.address}}</h3></td>
+          </tr>
+          <tr>
+              <td class="edit-title"><h3>IMAGE:</h3></td>
+            <td class="edit-title">{{profile_form.image}}</td>
+          </tr>
+          <tr></tr>
+          <tr></tr>
+        <tr>
+            <td></td>
+            <td><button style="align-self: center" class="btn btn-lg btn-primary btn-block" type="submit" >Save</button></td>
+        </tr>
+
+
+        </tbody>
+      </table>
+
+</form>
+
+
+     </div>
+    </div>
+</div>
+<br>
+
+</body>
+{% endblock content %}

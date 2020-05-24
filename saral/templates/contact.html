@@ -1,0 +1,127 @@
+<!--Contact detail of BTES-->
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>contact us</title>
+
+    <style>
+        #profile-edit-save {
+            box-sizing:border-box;
+            width:1000px;
+
+            padding:20px;
+            border-bottom:1px solid rgba(84,183,222,0.5);
+            background-color: rgba(84, 183, 222, 0.3);
+            margin-top: -170px;
+            margin-left: 250px;
+        }
+
+        #editSave {
+            display:block;
+            margin: 0 auto;
+            border:none;
+            border-radius:5px;
+            padding:30px 40px;
+            background-color:#2699c7;
+            color:#000000;
+            font-size:xx-large;
+            outline: none;
+        }
+    </style>
+    </head>
+<body  background="{% static 'images/dashback.jpg' %}">
+<div class="row">
+
+  <img src="{%static 'images/logo1.png' %}" height="200px" width="200px">
+
+</div>
+<div  class="column">
+    <div  id="profile-edit-save">
+        <button id="editSave">Contact Us</button>
+    </div>
+</div>
+
+<br><br>
+    <div class="alert alert-warning">
+     <table cellspacing="30" align="center" bgcolor="">
+
+                <tr>
+                       <th>
+                           <img src="{% static 'images/location.png' %}" width="100px" height="100px">
+                        </th>
+                        <th></th><th></th>
+                        <th>
+                            <img src="{% static 'images/call.png' %}" width="100px" height="100px">
+                        </th>
+                        <th></th><th></th>
+                        <th>
+                            <img src="{% static 'images/email.png' %}" width="130px" height="130px">
+                        </th>
+
+                </tr>
+
+
+                <tr>
+
+                       <td>
+                           <span style="color: black; font-size: x-large; ">
+                               <b>SCO 156-157, 4th Floor,<br>
+                                   Near Verka Building,<br>
+                                   Sector 34-A,<br>
+                                   Chandigarh-160022</b>
+                           </span>
+                       </td>
+                    <td></td>
+                    <td></td>
+
+
+                    <td>
+                        <span style="color: black; font-size: x-large; ">
+                            <b>
+                                Phone:<br> +91-172-5086508
+                            <br>
+                                +91-172-5087508
+                            </b>
+                        </span>
+
+                    </td>
+                    <td></td>
+                    <td></td>
+
+                    <td>
+                        <span style="color: black; font-size: x-large; ">
+                            <b>Email:<br>
+                                info@btes.co.in
+                            </b>
+                        </span>
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>
+                        <a href="https://www.facebook.com/btesedu/"><img src="{% static 'images/fb.png' %}" heignt="100px" width="100px">
+                        </a>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a href="https://twitter.com/btesedu"><img src="{% static 'images/twitter.png' %}" heignt="100px" width="100px">
+                        </a>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a href="https://www.linkedin.com/company/btesedu"><img src="{% static 'images/linkdin.png' %}" heignt="100px" width="100px">
+                        </a>
+                    </td>
+                </tr>
+            </table>
+
+    </div>
+
+
+</body>
+</html>

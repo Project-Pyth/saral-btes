@@ -1,0 +1,58 @@
+<!--Panel where personal notification is showed-->
+{% extends 'dashboard.html' %}
+{% block content %}
+    <head>
+        <style>
+
+            #editSave {
+                display: block;
+                margin: 0 auto;
+                border: none;
+                border-radius: 5px;
+                padding: 20px 30px;
+                background-color: #2699c7;
+                color: #fff;
+                font-size: 24px;
+                outline: none;
+            }
+
+            #profile-edit-save {
+                box-sizing: border-box;
+                width: 1000px;
+                margin: 0 auto;
+                padding: 20px;
+                border-bottom: 1px solid rgba(84, 183, 222, 0.5);
+                background-color: rgba(84, 183, 222, 0.3);
+            }
+        </style>
+        <title></title>
+    </head>
+    <body>
+    <div id="profile-edit-save">
+        <button id="editSave">Personal Notification</button>
+    </div>
+        <br><br>
+    <a class="btn btn-lg btn-primary btn-block" type="" href="{% url 'myapp:personal' %}"
+       style="width:200px; margin-left: 100px;">
+        Back</a><br><br>
+    {% for post in posts %}
+        <div class="row d-flex justify-content-center">
+            <div class="alert alert-warning" role="alert" style="width: 1000px">
+
+                <h4 class="alert-heading">From :- {{ post.From }} </h4>
+
+                <h4 class="alert-heading">Subject :- {{ post.Sub.sub }}</h4>
+
+                <hr>
+                <p>
+                    {{ post.Content }}
+                </p>
+                <hr>
+                <p class="mb-0"> {{ post.Date }}</p>
+            </div>
+        </div>̥
+
+    {% endfor %}
+{% include 'snippet.html' with posts=posts %}
+    </body>
+{% endblock content %}

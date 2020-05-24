@@ -1,0 +1,79 @@
+<!--Login page for employees-->
+
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+
+    <title>LogIn</title>
+  </head>
+  <body background="{%static 'images/home.png' %}">
+<div class="row">
+
+  <img src="{%static 'images/logo1.png' %}" height="200px" width="200px">
+</div>
+<div class="column">
+
+  <div style="text-align: center;">
+<h1 style="position:absolute; top:50px; left:550px" > <b><span>Employee Login </span></b></h1>
+    </div>
+</div>
+<br><br>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<form class='container' method="POST"  action="" >
+   {% csrf_token %}
+
+
+  <div class="form-group row">
+    <div class="col-xl-6">
+    <label for="exampleInputEmail1"><span  style=" font-size: xx-large">Username</span></label>
+      <br>
+      <input type="text" class="form-control" id="exampleInputEmail1" name="user" aria-describedby="emailHelp" placeholder='Enter Username'>
+    <small id="emailHelp" class="form-text text-muted"></small>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-xl-6">
+    <label for="exampleInputPassword1"><span style=" font-size: xx-large">Password</span></label>
+      <br>
+      <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder='Enter Password'>
+    </div>
+  </div>
+   <div class="main-content-header">
+    <div style="text-align: center;">
+    {% for message in messages %}
+      <span class="colorchange">
+        <span style="color: red; "><h3 style="position:absolute; left:330px"><b><i>{{message}}</i></b></h3></span>
+      </span>
+    {% endfor %}
+
+    </div>
+</div>
+<br><br>
+<div>
+  <div>
+  <button type="submit" class="btn btn-light">Login</button>&nbsp;&nbsp;
+     <a class="btn btn-light" href="{% url 'password_reset' %}">Forgot Password</a>
+    </div>
+</div>
+</div>
+</form>
+
+<br>
+
+
+  </body>
+</html>
